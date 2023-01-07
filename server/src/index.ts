@@ -2,11 +2,13 @@ import express, { Request, Response } from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import { PhoneBookModel } from "./Model/PhoneBook";
+import cors from "cors";
 dotenv.config();
 
 const app = express();
 app.use(express.json());
 const PORT = 5001;
+app.use(cors());
 
 app.post("/category", async (req: Request, res: Response) => {
 	const { category } = req.body;
@@ -17,8 +19,9 @@ app.post("/category", async (req: Request, res: Response) => {
 	res.status(200).json(newCategory);
 });
 
-app.get("/", async (req: Request, res: Response) => {
-	res.send("hello");
+app.get("/category", async (req: Request, res: Response) => {
+	const allCategory = await PhoneBookModel.find();
+	res.json(allCategory);
 });
 
 mongoose.connect(process.env.MONGO_URL!).then(() => {

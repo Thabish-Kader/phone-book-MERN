@@ -1,7 +1,9 @@
+import { AddCategory } from "./components/AddCategory";
+
 function App() {
 	return (
-		<div className="App">
-			<h1 className="">hey</h1>
+		<div className="bg-[#242424] h-screen">
+			<AddCategory />
 		</div>
 	);
 }

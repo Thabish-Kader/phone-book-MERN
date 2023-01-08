@@ -30,7 +30,7 @@ mongoose.connect(process.env.MONGO_URL!, () => {
 	app.listen(PORT);
 });
 
-mongoose.connection.on("connected", () => console.log("Connected"));
+//handle error
 mongoose.connection.on("error", (err) =>
 	console.log("Connection failed with - ", err)
 );

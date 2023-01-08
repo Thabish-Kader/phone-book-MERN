@@ -1,4 +1,4 @@
-export type Category = {
+export type TCategory = {
 	_id: string;
 	category: string;
 };

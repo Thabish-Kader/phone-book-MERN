@@ -1,7 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { TCategory } from "../typings";
+import { BASE_URL } from "../config";
+import { Category } from "./Category";
 
 export const AddCategory = () => {
 	const [category, setCategory] = useState("");
+	const [categories, setCategories] = useState<TCategory[]>([]);
 
 	const handleAddCategory = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
@@ -14,9 +18,20 @@ export const AddCategory = () => {
 		});
 		const newCatrgory = await res.json();
 		setCategory("");
+		setCategories([...categories, newCatrgory]);
 	};
+
+	useEffect(() => {
+		const fetchCategory = async () => {
+			const res = await fetch(`${BASE_URL}/category`);
+			const resCategories: TCategory[] = await res.json();
+			setCategories(resCategories);
+		};
+		fetchCategory();
+	}, []);
+
 	return (
-		<div className="">
+		<div className="max-w-4xl mx-auto">
 			<form
 				onSubmit={handleAddCategory}
 				className="space-x-2 p-10 flex items-center flex-col"
@@ -44,6 +59,11 @@ export const AddCategory = () => {
 					</button>
 				</div>
 			</form>
+			<div className="grid grid-cols-4 gap-2 ">
+				{categories.map((category) => (
+					<Category key={category._id} category={category.category} />
+				))}
+			</div>
 		</div>
 	);
 };

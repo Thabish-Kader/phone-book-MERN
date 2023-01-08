@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { BASE_URL } from "../config";
-import { Category } from "../typings";
+import { TCategory } from "../typings";
 
 export const Categories = () => {
-	const [categories, setCategories] = useState<Category[]>([]);
+	const [categories, setCategories] = useState<TCategory[]>([]);
 
 	useEffect(() => {
 		const fetchCategory = async () => {
 			const res = await fetch(`${BASE_URL}/category`);
-			const resCategories: Category[] = await res.json();
+			const resCategories: TCategory[] = await res.json();
 			setCategories(resCategories);
 		};
 		fetchCategory();

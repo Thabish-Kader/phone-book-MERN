@@ -5,7 +5,7 @@ function App() {
 	return (
 		<div className="bg-[#242424] h-screen">
 			<AddCategory />
-			<Categories />
+			{/* <Categories /> */}
 		</div>
 	);
 }

@@ -24,7 +24,17 @@ app.get("/category", async (req: Request, res: Response) => {
 	res.json(allCategory);
 });
 
-mongoose.connect(process.env.MONGO_URL!).then(() => {
-	console.log(`Listening ----> ${PORT}`);
+mongoose.set("strictQuery", false);
+mongoose.connect(process.env.MONGO_URL!, () => {
+	console.log(`Connected ----> ${PORT}`);
 	app.listen(PORT);
+});
+
+mongoose.connection.on("connected", () => console.log("Connected"));
+mongoose.connection.on("error", (err) =>
+	console.log("Connection failed with - ", err)
+);
+
+app.get("/", async (req: Request, res: Response) => {
+	res.send("Hello");
 });

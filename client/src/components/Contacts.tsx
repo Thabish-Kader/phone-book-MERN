@@ -33,7 +33,7 @@ export const Contacts = () => {
 		setCategory(newTitle);
 		setTitle("");
 	};
-
+	console.log(category);
 	return (
 		<div className="max-w-2xl mx-auto  flex flex-col justify-center items-center">
 			<div className="border p-2 text-white mt-10 flex flex-col space-y-2">
@@ -76,6 +76,12 @@ export const Contacts = () => {
 					/>
 				</div>
 				<button className="btn">Add</button>
+				{category?.contacts.map((contact) => (
+					<div key={contact._id} className="flex">
+						<h1>{contact.name}</h1>
+						<p>{contact.description}</p>
+					</div>
+				))}
 			</div>
 		</div>
 	);

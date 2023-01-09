@@ -1,11 +1,11 @@
-import mongoose, { isObjectIdOrHexString } from "mongoose";
+import mongoose from "mongoose";
 const { Schema } = mongoose;
 
 const PhoneBook = new Schema({
 	category: String,
 	contacts: [
 		{
-			id: Schema.Types.ObjectId,
+			// id: Schema.Types.ObjectId,
 			name: String,
 			description: String,
 		},

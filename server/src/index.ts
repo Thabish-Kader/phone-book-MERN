@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import { PhoneBookModel } from "./Model/PhoneBook";
 import cors from "cors";
-import categoryRoutes from "./Routes/category";
+import categoryRoutes from "./Routes/categoryRoutes";
 dotenv.config();
 
 const app = express();

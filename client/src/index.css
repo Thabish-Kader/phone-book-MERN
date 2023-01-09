@@ -5,3 +5,12 @@
 body {
 	background-color: #242424;
 }
+
+@layer components {
+	.inputs {
+		@apply p-2 bg-transparent outline-none text-yellow-400  rounded mx-3;
+	}
+	.btn {
+		@apply p-2 rounded-lg bg-yellow-500 text-black disabled:bg-gray-500;
+	}
+}

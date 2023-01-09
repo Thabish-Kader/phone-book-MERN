@@ -50,16 +50,32 @@ export const Contacts = () => {
 						placeholder="Change Title"
 						value={title}
 						onChange={(e) => setTitle(e.target.value)}
-						className="p-2 bg-transparent outline-none text-yellow-400"
+						className="inputs"
 					/>
 					<button
 						disabled={!title}
 						onClick={handleUpdateTitle}
-						className="p-2 rounded-lg bg-yellow-500 text-black disabled:bg-gray-500"
+						className="btn"
 					>
 						Change Title
 					</button>
 				</div>
+			</div>
+			{/* Contacts */}
+			<div className="max-w-2xl mx-auto mt-10 flex flex-col space-y-2">
+				<div className="grid grid-cols-2 gap-1 items-center ">
+					<input
+						type="text"
+						placeholder="Enter Contact name"
+						className="inputs border"
+					/>
+					<input
+						type="text"
+						placeholder="Enter Description"
+						className="inputs border"
+					/>
+				</div>
+				<button className="btn">Add</button>
 			</div>
 		</div>
 	);

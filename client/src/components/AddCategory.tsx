@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { TCategory } from "../typings";
 import { BASE_URL } from "../config";
 import { Category } from "./Category";
+import { Context } from "../main";
+// import { Context } from "../App";
 
 export const AddCategory = () => {
 	const [category, setCategory] = useState("");
-	const [categories, setCategories] = useState<TCategory[]>([]);
-
+	// const [categories, setCategories] = useState<TCategory[]>([]);
+	const { categories, setCategories } = useContext(Context);
 	const handleAddCategory = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		const res = await fetch("http://localhost:5001/category", {
@@ -18,7 +20,7 @@ export const AddCategory = () => {
 		});
 		const newCatrgory = await res.json();
 		setCategory("");
-		setCategories([...categories, newCatrgory]);
+		setCategories([...categories!, newCatrgory]);
 	};
 
 	useEffect(() => {
@@ -60,8 +62,14 @@ export const AddCategory = () => {
 				</div>
 			</form>
 			<div className="grid grid-cols-4 gap-2 ">
-				{categories.map((category) => (
-					<Category key={category._id} category={category.category} />
+				{categories?.map((category) => (
+					<>
+						<Category
+							key={category._id}
+							categoryId={category._id}
+							category={category.category}
+						/>
+					</>
 				))}
 			</div>
 		</div>

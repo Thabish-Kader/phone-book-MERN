@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import { PhoneBookModel } from "./Model/PhoneBook";
 import cors from "cors";
+import categoryRoutes from "./Routes/category";
 dotenv.config();
 
 const app = express();
@@ -10,23 +11,21 @@ app.use(express.json());
 const PORT = 5001;
 app.use(cors());
 
-app.route("/category")
-	.get(async (req: Request, res: Response) => {
-		const { category } = req.body;
-		const newCategory = new PhoneBookModel({
-			category: category,
-		});
-		await newCategory.save();
-		res.status(200).json(newCategory);
-	})
-	.post(async (req: Request, res: Response) => {
-		const { category } = req.body;
-		const newCategory = new PhoneBookModel({
-			category: category,
-		});
-		await newCategory.save();
-		res.status(200).json(newCategory);
-	});
+app.use("/category", categoryRoutes);
+
+// app.route("/category")
+// 	.get(async (req: Request, res: Response) => {
+// 		const categories = await PhoneBookModel.find();
+// 		res.json(categories);
+// 	})
+// 	.post(async (req: Request, res: Response) => {
+// 		const { category } = req.body;
+// 		const newCategory = new PhoneBookModel({
+// 			category: category,
+// 		});
+// 		await newCategory.save();
+// 		res.status(200).json(newCategory);
+// 	});
 
 mongoose.set("strictQuery", false);
 mongoose.connect(process.env.MONGO_URL!, () => {

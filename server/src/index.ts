@@ -10,19 +10,23 @@ app.use(express.json());
 const PORT = 5001;
 app.use(cors());
 
-app.post("/category", async (req: Request, res: Response) => {
-	const { category } = req.body;
-	const newCategory = new PhoneBookModel({
-		category: category,
+app.route("/category")
+	.get(async (req: Request, res: Response) => {
+		const { category } = req.body;
+		const newCategory = new PhoneBookModel({
+			category: category,
+		});
+		await newCategory.save();
+		res.status(200).json(newCategory);
+	})
+	.post(async (req: Request, res: Response) => {
+		const { category } = req.body;
+		const newCategory = new PhoneBookModel({
+			category: category,
+		});
+		await newCategory.save();
+		res.status(200).json(newCategory);
 	});
-	await newCategory.save();
-	res.status(200).json(newCategory);
-});
-
-app.get("/category", async (req: Request, res: Response) => {
-	const allCategory = await PhoneBookModel.find();
-	res.json(allCategory);
-});
 
 mongoose.set("strictQuery", false);
 mongoose.connect(process.env.MONGO_URL!, () => {

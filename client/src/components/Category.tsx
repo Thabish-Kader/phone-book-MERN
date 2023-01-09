@@ -29,23 +29,21 @@ export const Category = ({ category, categoryId }: Props) => {
 	};
 
 	return (
-		<div className="bg-gray-200 p-2 rounded-lg">
-			<div className="flex flex-col justify-center">
-				<h1 className="font-bold text-2xl text-center capitalize">
-					{category}
-				</h1>
-				<form
-					onSubmit={handleDeleteCategory}
-					className="flex space-x-2"
-				>
-					<button className="p-2 bg-yellow-500 rounded-lg flex-1">
-						Update
-					</button>
-					<button className="p-2 bg-red-500 rounded-lg flex-1">
-						Delete
-					</button>
-				</form>
-			</div>
+		<div className="bg-gray-200 p-2 rounded-lg flex flex-col">
+			<h1 className="font-bold text-2xl text-center capitalize">
+				{category}
+			</h1>
+			<form
+				onSubmit={handleDeleteCategory}
+				className="flex space-x-2 mt-auto"
+			>
+				<button className="p-2 bg-yellow-500 rounded-lg flex-1">
+					Update
+				</button>
+				<button className="p-2 bg-red-500 rounded-lg flex-1">
+					Delete
+				</button>
+			</form>
 		</div>
 	);
 };

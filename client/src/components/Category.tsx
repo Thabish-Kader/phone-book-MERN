@@ -1,12 +1,13 @@
 import React, { useContext, useState } from "react";
-// import { Context } from "../App";
+import { Context } from "../App";
 import { TCategory } from "../typings";
-import { Context } from "../main";
+// import { Context } from "../main";
 
 type Props = {
 	category: string;
 	categoryId: string;
 };
+
 export const Category = ({ category, categoryId }: Props) => {
 	const { categories, setCategories } = useContext(Context);
 

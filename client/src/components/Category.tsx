@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { Context } from "../App";
 import { TCategory } from "../typings";
 // import { Context } from "../main";
-
+import { Link } from "react-router-dom";
 type Props = {
 	category: string;
 	categoryId: string;
@@ -34,14 +34,18 @@ export const Category = ({ category, categoryId }: Props) => {
 			<h1 className="font-bold text-2xl text-center capitalize">
 				{category}
 			</h1>
-			<form
-				onSubmit={handleDeleteCategory}
-				className="flex space-x-2 mt-auto"
-			>
-				<button className="p-2 bg-yellow-500 rounded-lg flex-1">
-					Update
-				</button>
-				<button className="p-2 bg-red-500 rounded-lg flex-1">
+
+			<form className="flex space-x-2 mt-auto">
+				<Link
+					to={`/category/${categoryId}`}
+					className="p-2 bg-green-500 rounded-lg flex-1 text-center"
+				>
+					View
+				</Link>
+				<button
+					onClick={handleDeleteCategory}
+					className="p-2 bg-red-500 rounded-lg flex-1"
+				>
 					Delete
 				</button>
 			</form>

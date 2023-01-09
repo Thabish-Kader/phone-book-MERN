@@ -28,7 +28,7 @@ function App() {
 	}, []);
 
 	return (
-		<div className="bg-[#242424] h-screen">
+		<div className=" h-screen">
 			<Context.Provider value={{ categories, setCategories }}>
 				<AddCategory />
 			</Context.Provider>

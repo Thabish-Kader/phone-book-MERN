@@ -3,14 +3,33 @@ import { PhoneBookModel } from "../Model/PhoneBook";
 
 const contactRoute = express.Router();
 
-contactRoute.post("/contact", async (req: Request, res: Response) => {
-	const { categoryId } = req.params;
-	const { contact } = req.body;
-	const category = await PhoneBookModel.findById({
-		categoryId,
-	});
-	if (!category) return res.status(404).send("No such category");
-	category.contacts.push(contact);
-});
+contactRoute.post(
+	"/:categoryId/contact",
+	async (req: Request, res: Response) => {
+		const { categoryId } = req.params;
+		const { name, description } = req.body;
+		const category = await PhoneBookModel.findByIdAndUpdate(
+			{ _id: categoryId },
+			{ $push: { contacts: { name, description } } },
+			{ new: true }
+		);
+		res.status(200).json(category);
+	}
+);
+
+contactRoute.delete(
+	"/:categoryId/contact",
+	async (req: Request, res: Response) => {
+		const { categoryId } = req.params;
+		const { contactId } = req.body;
+
+		const deletedContact = await PhoneBookModel.findByIdAndUpdate(
+			{ _id: categoryId },
+			{ $pull: { contacts: { _id: contactId } } },
+			{ safe: true, multi: false, new: true }
+		);
+		res.status(200).json(deletedContact);
+	}
+);
 
 export default contactRoute;

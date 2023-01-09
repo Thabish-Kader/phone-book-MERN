@@ -48,24 +48,18 @@ categoryRoutes.put("/:categoryId", async (req: Request, res: Response) => {
 	res.status(200).json(updatedCategory);
 });
 
-categoryRoutes.post(
-	"/:categoryId/contact",
-	async (req: Request, res: Response) => {
-		const { categoryId } = req.params;
-		const { name, description } = req.body;
-
-		// const category = await PhoneBookModel.findById({
-		// 	categoryId,
-		// });
-		// if (!category) return res.status(404).send("No such category");
-
-		const category = await PhoneBookModel.findByIdAndUpdate(
-			{ _id: categoryId },
-			{ $push: { contacts: { name, description } } },
-			{ new: true }
-		);
-		res.status(200).json(category);
-	}
-);
+// categoryRoutes.post(
+// 	"/:categoryId/contact",
+// 	async (req: Request, res: Response) => {
+// 		const { categoryId } = req.params;
+// 		const { name, description } = req.body;
+// 		const category = await PhoneBookModel.findByIdAndUpdate(
+// 			{ _id: categoryId },
+// 			{ $push: { contacts: { name, description } } },
+// 			{ new: true }
+// 		);
+// 		res.status(200).json(category);
+// 	}
+// );
 
 export default categoryRoutes;

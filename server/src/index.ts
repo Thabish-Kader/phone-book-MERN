@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import { PhoneBookModel } from "./Model/PhoneBook";
 import cors from "cors";
 import categoryRoutes from "./Routes/categoryRoutes";
+import contactRoute from "./Routes/contactRoute";
 dotenv.config();
 
 const app = express();
@@ -12,6 +13,7 @@ const PORT = 5001;
 app.use(cors());
 
 app.use("/category", categoryRoutes);
+app.use("/category", contactRoute);
 
 // app.route("/category")
 // 	.get(async (req: Request, res: Response) => {

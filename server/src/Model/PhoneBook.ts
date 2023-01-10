@@ -5,9 +5,9 @@ const PhoneBook = new Schema({
 	category: String,
 	contacts: [
 		{
-			// id: Schema.Types.ObjectId,
 			name: String,
 			description: String,
+			number: Number,
 		},
 	],
 });

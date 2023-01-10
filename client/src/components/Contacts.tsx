@@ -7,8 +7,10 @@ import { FaUserAlt } from "react-icons/fa";
 export const Contacts = () => {
 	const [category, setCategory] = useState<TCategory>();
 	const [title, setTitle] = useState("");
+	// Contact info state
 	const [name, setName] = useState("");
 	const [description, setDescription] = useState("");
+	const [number, setNumber] = useState("");
 	const { categoryId } = useParams();
 
 	// Update title
@@ -34,7 +36,7 @@ export const Contacts = () => {
 		e.preventDefault();
 		const res = await fetch(`${BASE_URL}/category/${categoryId}/contact`, {
 			method: "POST",
-			body: JSON.stringify({ name, description }),
+			body: JSON.stringify({ name, description, number }),
 			headers: {
 				"Content-type": "application/json",
 			},
@@ -43,6 +45,19 @@ export const Contacts = () => {
 		setCategory(newCategory);
 		setName("");
 		setDescription("");
+		setNumber("");
+	};
+
+	const handleDeleteContact = async (contactId: string) => {
+		const res = await fetch(`${BASE_URL}/category/${categoryId}/contact`, {
+			method: "DELETE",
+			body: JSON.stringify({ contactId }),
+			headers: {
+				"Content-type": "application/json",
+			},
+		});
+		const deletedContact = await res.json();
+		setCategory(deletedContact);
 	};
 
 	// fecth contact info
@@ -55,7 +70,7 @@ export const Contacts = () => {
 		fetchCategory();
 	}, [categoryId]);
 	return (
-		<div className="max-w-2xl mx-auto  flex flex-col justify-center items-center">
+		<div className="max-w-4xl mx-auto  flex flex-col justify-center ">
 			<div className="border p-2 text-white mt-10 flex flex-col space-y-2">
 				<h1 className="font-bold text-2xl capitalize text-center">
 					Category :{" "}
@@ -70,7 +85,7 @@ export const Contacts = () => {
 						placeholder="Change Title"
 						value={title}
 						onChange={(e) => setTitle(e.target.value)}
-						className="inputs"
+						className="inputs flex-1"
 					/>
 					<button
 						disabled={!title}
@@ -83,19 +98,28 @@ export const Contacts = () => {
 			</div>
 
 			{/* Contacts */}
-			<div className="max-w-2xl mx-auto mt-10 flex flex-col space-y-2">
+			<div className=" mt-10 flex flex-col space-y-2">
 				{/* Inputs for adding contacts */}
 				<form
 					onSubmit={handleAddContact}
-					className="grid grid-cols-2 gap-1 items-center "
+					className="flex flex-col  space-y-4"
 				>
-					<input
-						type="text"
-						placeholder="Enter Contact name"
-						className="inputs border"
-						value={name}
-						onChange={(e) => setName(e.target.value)}
-					/>
+					<div className="grid grid-cols-2">
+						<input
+							type="text"
+							placeholder="Enter Contact name"
+							className="inputs border"
+							value={name}
+							onChange={(e) => setName(e.target.value)}
+						/>
+						<input
+							type="text"
+							placeholder="Enter Phone Number"
+							className="inputs border"
+							value={number}
+							onChange={(e) => setNumber(e.target.value)}
+						/>
+					</div>
 					<input
 						type="text"
 						placeholder="Enter Description"
@@ -103,7 +127,10 @@ export const Contacts = () => {
 						value={description}
 						onChange={(e) => setDescription(e.target.value)}
 					/>
-					<button disabled={!name} className="btn my-5 col-span-2">
+					<button
+						disabled={!name || !number}
+						className="btn my-5 col-span-2"
+					>
 						Add
 					</button>
 				</form>
@@ -111,21 +138,26 @@ export const Contacts = () => {
 				{/* Contact Info */}
 				<div className="pt-4 ">
 					<div className="flex justify-between text-yellow-500 p-5 border-b first:border-t">
-						<p></p>
-						<h1 className="capitalize w-32 ml-6 ">Contact name</h1>
+						<p className="capitalize w-32 ml-6 ">Contact name</p>
 						<p className="flex-1 ml-6">Description</p>
+						<p className="flex-1 -ml-12">Phone Number</p>
+						<p></p>
 					</div>
 					{category?.contacts.map((contact) => (
 						<div
 							key={contact._id}
-							className="flex justify-between text-yellow-500 p-5 border-b first:border-t"
+							className="flex justify-between text-yellow-500 p-5 border-b first:border-t space-x-3"
 						>
 							<FaUserAlt size={30} />
 							<h1 className="capitalize w-32 mx-3">
 								{contact.name}
 							</h1>
 							<p className="flex-1">{contact.description}</p>
-							<button className="px-2 bg-red-500 rounded-lg text-white">
+							<p className="flex-1">{contact.number}</p>
+							<button
+								onClick={() => handleDeleteContact(contact._id)}
+								className="px-2 bg-red-500 rounded-lg text-white"
+							>
 								Delete
 							</button>
 						</div>

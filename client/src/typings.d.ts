@@ -7,5 +7,6 @@ export type TCategory = {
 type Contact = {
 	name: string;
 	description: string;
+	number: string;
 	_id: string;
 };

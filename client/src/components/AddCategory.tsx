@@ -33,7 +33,7 @@ export const AddCategory = () => {
 	}, []);
 
 	return (
-		<div className="max-w-4xl mx-auto">
+		<div className="max-w-5xl mx-auto">
 			<form
 				onSubmit={handleAddCategory}
 				className="space-x-2 p-10 flex items-center flex-col"

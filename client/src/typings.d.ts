@@ -4,7 +4,7 @@ export type TCategory = {
 	contacts: Contact[];
 };
 
-type Contact = {
+export type Contact = {
 	name: string;
 	description: string;
 	number: string;

@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import { AddCategory } from "./components/AddCategory";
 import { TCategory } from "./typings";
 import { BASE_URL } from "./config";
+import { getCategories } from "./api/getCategories";
 
 type CategoryContextType = {
 	categories: TCategory[] | null;
@@ -20,8 +21,7 @@ function App() {
 	const [categories, setCategories] = useState<TCategory[]>([]);
 	useEffect(() => {
 		const fetchCategory = async () => {
-			const res = await fetch(`${BASE_URL}/category`);
-			const resCategories: TCategory[] = await res.json();
+			const resCategories = await getCategories();
 			setCategories(resCategories);
 		};
 		fetchCategory();

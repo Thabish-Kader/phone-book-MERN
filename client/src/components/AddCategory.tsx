@@ -4,23 +4,17 @@ import { BASE_URL } from "../config";
 import { Category } from "./Category";
 
 import { Context } from "../App";
+import { addCategory } from "../api/addCategory";
 
 export const AddCategory = () => {
 	const [category, setCategory] = useState("");
-
 	const { categories, setCategories } = useContext(Context);
+
 	const handleAddCategory = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		const res = await fetch("http://localhost:5001/category", {
-			method: "POST",
-			body: JSON.stringify({ category }),
-			headers: {
-				"Content-Type": "application/json",
-			},
-		});
-		const newCatrgory = await res.json();
+		const newCategory = await addCategory(category);
 		setCategory("");
-		setCategories([...categories!, newCatrgory]);
+		setCategories([...categories!, newCategory]);
 	};
 
 	useEffect(() => {

@@ -5,6 +5,8 @@ import { TCategory } from "../typings";
 import { FaUserAlt } from "react-icons/fa";
 import { updateTitle } from "../api/updateTitle";
 import { addContact } from "../api/addContact";
+import { deleteContact } from "../api/deleteContact";
+import { getCategory } from "../api/getCategory";
 
 export const Contacts = () => {
 	const [category, setCategory] = useState<TCategory>();
@@ -41,23 +43,16 @@ export const Contacts = () => {
 	};
 
 	const handleDeleteContact = async (contactId: string) => {
-		const res = await fetch(`${BASE_URL}/category/${categoryId}/contact`, {
-			method: "DELETE",
-			body: JSON.stringify({ contactId }),
-			headers: {
-				"Content-type": "application/json",
-			},
-		});
-		const deletedContact = await res.json();
+		if (!categoryId) return;
+		const deletedContact = await deleteContact(categoryId, contactId);
 		setCategory(deletedContact);
 	};
 
 	// fecth contact info
 	useEffect(() => {
 		const fetchCategory = async () => {
-			const categoryRes = await fetch(
-				`${BASE_URL}/category/${categoryId}`
-			).then(async (res) => setCategory(await res.json()));
+			const category = await getCategory(categoryId!);
+			setCategory(category);
 		};
 		fetchCategory();
 	}, [categoryId]);

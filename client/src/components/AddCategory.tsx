@@ -17,15 +17,6 @@ export const AddCategory = () => {
 		setCategories([...categories!, newCategory]);
 	};
 
-	useEffect(() => {
-		const fetchCategory = async () => {
-			const res = await fetch(`${BASE_URL}/category`);
-			const resCategories: TCategory[] = await res.json();
-			setCategories(resCategories);
-		};
-		fetchCategory();
-	}, []);
-
 	return (
 		<div className="max-w-5xl mx-auto">
 			<form

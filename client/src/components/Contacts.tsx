@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import { BASE_URL } from "../config";
 import { TCategory } from "../typings";
 import { FaUserAlt } from "react-icons/fa";
+import { updateTitle } from "../api/updateTitle";
+import { addContact } from "../api/addContact";
 
 export const Contacts = () => {
 	const [category, setCategory] = useState<TCategory>();
@@ -16,17 +18,8 @@ export const Contacts = () => {
 	// Update title
 	const handleUpdateTitle = async (e: React.FormEvent) => {
 		e.preventDefault();
-		const updatedTitleRes = await fetch(
-			`${BASE_URL}/category/${categoryId}`,
-			{
-				method: "PUT",
-				body: JSON.stringify({ title }),
-				headers: {
-					"Content-type": "application/json",
-				},
-			}
-		);
-		const newTitle: TCategory = await updatedTitleRes.json();
+		if (!categoryId) return alert("No such category");
+		const newTitle = await updateTitle(title, categoryId);
 		setCategory(newTitle);
 		setTitle("");
 	};
@@ -34,14 +27,13 @@ export const Contacts = () => {
 	// Add Contact
 	const handleAddContact = async (e: React.FormEvent) => {
 		e.preventDefault();
-		const res = await fetch(`${BASE_URL}/category/${categoryId}/contact`, {
-			method: "POST",
-			body: JSON.stringify({ name, description, number }),
-			headers: {
-				"Content-type": "application/json",
-			},
-		});
-		const newCategory = await res.json();
+		if (!categoryId) return alert("No such Category");
+		const newCategory = await addContact(
+			categoryId,
+			name,
+			description,
+			number
+		);
 		setCategory(newCategory);
 		setName("");
 		setDescription("");

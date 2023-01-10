@@ -4,6 +4,7 @@ import { Contact, TCategory } from "../typings";
 // import { Context } from "../main";
 import { Link } from "react-router-dom";
 import { FaUserAlt } from "react-icons/fa";
+import { deleteCategory } from "../api/deleteCategory";
 type Props = {
 	category: string;
 	categoryId: string;
@@ -15,15 +16,7 @@ export const Category = ({ category, categoryId, contacts }: Props) => {
 
 	const handleDeleteCategory = async (e: React.FormEvent) => {
 		e.preventDefault();
-		const res = await fetch("http://localhost:5001/category", {
-			method: "DELETE",
-			body: JSON.stringify({ categoryId }),
-			headers: {
-				"Content-Type": "application/json",
-			},
-		});
-
-		const deletedCategory = await res.json();
+		const deletedCategory = await deleteCategory(categoryId);
 		setCategories(
 			categories?.filter(
 				(category) => category._id !== deletedCategory._id

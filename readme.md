@@ -31,5 +31,8 @@ This application is built to teach how to build a MERN application with complete
 
 ### Resources
 
+-   [Fetch Api](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
+-   [Vite](https://vitejs.dev/)
 -   [useState with useContext in Typescript](https://stackoverflow.com/questions/72420279/usestate-with-usecontext-in-typescript)
 -   [Mongoose findByIdAndUpdate not returning correct model](https://stackoverflow.com/questions/30419575/mongoose-findbyidandupdate-not-returning-correct-model)
+-   [How to watch and reload ts-node when TypeScript files change](https://stackoverflow.com/questions/37979489/how-to-watch-and-reload-ts-node-when-typescript-files-change)

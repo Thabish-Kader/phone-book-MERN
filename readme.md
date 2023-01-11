@@ -1,6 +1,6 @@
 # MERN Course with Typescript and Tailwind Css
 
-## Phonebook Fullstack Application
+## Phonebook Fullstack Application - CRUD
 
 ## Mongo Db, Express, React, Node, Typescript, Tailwind Css, Context API
 

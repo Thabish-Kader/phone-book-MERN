@@ -13,7 +13,21 @@
 
 <img align="left" alt="Tailwind" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg" />
 
+<br/>
+<br/>
+
+This application is built to teach how to build a MERN application with complete typesafety both frontend and backend with state management. It is an intermediate level application.
+
+### Skills you will learn
+
+-   Typescript (Frontend and Backend)
+-   React
+-   State Management with context api
+-   Mongo DB
+-   Tailwind Css
+-   Express
+
 ### Resources
 
-[useState with useContext in Typescript](https://stackoverflow.com/questions/72420279/usestate-with-usecontext-in-typescript)
-[Mongoose findByIdAndUpdate not returning correct model](https://stackoverflow.com/questions/30419575/mongoose-findbyidandupdate-not-returning-correct-model)
+-   [useState with useContext in Typescript](https://stackoverflow.com/questions/72420279/usestate-with-usecontext-in-typescript)
+-   [Mongoose findByIdAndUpdate not returning correct model](https://stackoverflow.com/questions/30419575/mongoose-findbyidandupdate-not-returning-correct-model)

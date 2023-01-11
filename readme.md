@@ -1,4 +1,6 @@
-# Phone Book - CRUD Application with state management
+# MERN Course with Typescript and Tailwind Css
+
+## Phonebook Fullstack Application
 
 ## Mongo Db, Express, React, Node, Typescript, Tailwind Css, Context API
 

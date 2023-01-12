@@ -20,6 +20,10 @@
 
 This application is built to teach how to build a MERN application with complete typesafety both frontend and backend with state management. It is an intermediate level application.
 
+### Youtube Video
+
+[![Intermediate MERN course 2023 | Typescript | State Management | Part 1](https://ytcards.demolab.com/?id=Fx8m4-RMgMw&title=Intermediate+MERN+course+2023+%7C+Typescript+%7C+State+Management+%7C+Part+1&lang=en&timestamp=1673512245&background_color=%230d1117&title_color=%23ffffff&stats_color=%23dedede&width=250 "Intermediate MERN course 2023 | Typescript | State Management | Part 1")](https://www.youtube.com/watch?v=Fx8m4-RMgMw)
+
 ### Skills you will learn
 
 -   Typescript (Frontend and Backend)

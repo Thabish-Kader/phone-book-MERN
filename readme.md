@@ -31,6 +31,9 @@ This application is built to teach how to build a MERN application with complete
 <td>
 [![Intermediate MERN course 2023 | POST, GET | Tailwind CSS | Part 2](https://ytcards.demolab.com/?id=_9PfwYAN-oM&title=Intermediate+MERN+course+2023+%7C+POST%2C+GET+%7C+Tailwind+CSS+%7C+Part+2&lang=en&timestamp=1673938808&background_color=%230d1117&title_color=%23ffffff&stats_color=%23dedede&width=250 "Intermediate MERN course 2023 | POST, GET | Tailwind CSS | Part 2")](https://www.youtube.com/watch?v=_9PfwYAN-oM)
 </td>
+
+</tr>
+</table>
 ### Skills you will learn
 
 -   Typescript (Frontend and Backend)

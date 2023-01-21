@@ -3,6 +3,7 @@ import { PhoneBookModel } from "../Model/PhoneBook";
 
 const contactRoute = express.Router();
 
+// create contact
 contactRoute.post(
 	"/:categoryId/contact",
 	async (req: Request, res: Response) => {
@@ -16,7 +17,7 @@ contactRoute.post(
 		res.status(200).json(category);
 	}
 );
-
+// delete contact
 contactRoute.delete(
 	"/:categoryId/contact",
 	async (req: Request, res: Response) => {

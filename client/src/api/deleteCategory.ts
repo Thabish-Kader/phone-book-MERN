@@ -4,7 +4,7 @@ import { TCategory } from "../typings";
 export const deleteCategory = async (
 	categoryId: string
 ): Promise<TCategory> => {
-	const res = await fetch("http://localhost:5001/category", {
+	const res = await fetch(`${BASE_URL}/category`, {
 		method: "DELETE",
 		body: JSON.stringify({ categoryId }),
 		headers: {

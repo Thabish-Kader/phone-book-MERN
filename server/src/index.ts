@@ -15,20 +15,6 @@ app.use(cors());
 app.use("/category", categoryRoutes);
 app.use("/category", contactRoute);
 
-// app.route("/category")
-// 	.get(async (req: Request, res: Response) => {
-// 		const categories = await PhoneBookModel.find();
-// 		res.json(categories);
-// 	})
-// 	.post(async (req: Request, res: Response) => {
-// 		const { category } = req.body;
-// 		const newCategory = new PhoneBookModel({
-// 			category: category,
-// 		});
-// 		await newCategory.save();
-// 		res.status(200).json(newCategory);
-// 	});
-
 mongoose.set("strictQuery", false);
 mongoose.connect(process.env.MONGO_URL!, () => {
 	console.log(`Connected ----> ${PORT}`);
